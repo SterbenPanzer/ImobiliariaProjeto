@@ -1,0 +1,33 @@
+div.dataTables_length label {
+    width: 460px;
+    float: left;
+    text-align: left;
+}
+ 
+div.dataTables_length select {
+    width: 75px;
+    margin-left:30px;
+    margin-top: 8px;
+}
+ 
+div.dataTables_filter label {
+    float: right;
+    width: 640px;
+    margin-top: 8px;
+}
+ 
+div.dataTables_info {
+    padding-top: 8px;
+    margin-left: 30px;
+    margin-right: 600px;
+}
+ 
+div.dataTables_paginate {
+    float: right;
+    margin: 0;
+}
+ 
+table {
+    margin: 1em 0;
+    clear: both;
+}
