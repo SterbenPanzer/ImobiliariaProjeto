@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-           <link href="<?= $this->config->base_url() ?>css/css.css" rel="stylesheet" type="text/css">
+        <link href="<?= $this->config->base_url() ?>css/css.css" rel="stylesheet" type="text/css">
         <title>Menu do Admin</title>
     </head>
     <body>
@@ -20,9 +20,18 @@
                     <li class="nav-item active dropdown">
                         <a href="#" id="menuImoveis" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Imoveis</a>
                         <div class="dropdown-menu" aria-labelledby="menuImoveis">
-                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'index.php/Imovel/cadastrar' ?>">Cadastrar</a>
-                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'index.php/Imovel/listar' ?>">Visualizar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Imovel/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Imovel/listar' ?>">Visualizar</a>
                         </div>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuCategoria" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Categorias</a>
+                        <div class="dropdown-menu" aria-labelledby="menuCategoria">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Categoria/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Categoria/listar' ?>">Visualizar</a>
                         </div>
-                        </nav>
+                    </li>
+
+            </div>
+        </nav>
 

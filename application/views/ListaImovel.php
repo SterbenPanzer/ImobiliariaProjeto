@@ -32,8 +32,8 @@
                     echo '<td>' . $i->tx_descricao . '</td>';
                     echo '<td>' . 'R$ ' . $i->vl_valor . '</td>';
                     echo '<td>'
-                    . '<a class="btn btn-sm btn-outline-secondary mr-2"  role="button"   href="' . $this->config->base_url() . 'index.php/Imovel/alterar/' . $i->id_imovel . '"><i class="fas fa-pen"></i> Alterar </a>'
-                    . '<a class="btn btn-sm btn-outline-secondary "  role="button"   href="' . $this->config->base_url() . 'index.php/Imovel/deletar/' . $i->id_imovel . '"><i class="fas fa-times"></i> Deletar </a>'
+                    . '<a class="btn btn-sm btn-outline-secondary mr-2"  role="button"   href="' . $this->config->base_url() . 'Imovel/alterar/' . $i->id_imovel . '"><i class="fas fa-pen"></i> Alterar </a>'
+                    . '<a class="btn btn-sm btn-outline-secondary "  role="button"   href="' . $this->config->base_url() . 'Imovel/deletar/' . $i->id_imovel . '"><i class="fas fa-times"></i> Deletar </a>'
                     . '</td>';
 
                     echo '</tr>';

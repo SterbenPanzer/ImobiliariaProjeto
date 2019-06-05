@@ -24,18 +24,18 @@
                     <form acttion="" method="POST">
                         <h2>Formulário de imóveis</h2>
                         <br>
-                        <input class="form-control form-control-lg" type="hidden" name='id' id='id' value='<?= (isset($imovel)) ? $imovel->id_imovel : ''; ?>' >
+                        <input class="form-control form-control-lg" type="hidden" name='id' id='id' value='<?= (isset($imoveis)) ? $imoveis->id_imovel : ''; ?>' >
                         <label for="titulo">Título:</label>
-                        <input  class="form-control form-control-lg" type="text" name="titulo" id="titulo"  value="<?= (isset($imovel)) ? $imovel->tx_titulo : ''; ?> ">
+                        <input  class="form-control form-control-lg" type="text" name="titulo" id="titulo"  value="<?= (isset($imoveis)) ? $imoveis->tx_titulo : ''; ?> ">
                         <br>
                         <label for="status">Status:</label>
-                        <input class="form-control form-control-lg" type="text" name="status" id="status" value="<?= (isset($imovel)) ? $imovel->tx_status : ''; ?> ">
+                        <input class="form-control form-control-lg" type="text" name="status" id="status" value="<?= (isset($imoveis)) ? $imoveis->tx_status : ''; ?> ">
                         <br>
                         <label for="descricao">Descrição:</label>
-                        <textarea class="form-control form-control-lg"  name="descricao" id="descricao" value=""><?= (isset($imovel)) ? $imovel->tx_descricao : ''; ?></textarea>
+                        <textarea class="form-control form-control-lg"  name="descricao" id="descricao" value=""><?= (isset($imoveis)) ? $imoveis->tx_descricao : ''; ?></textarea>
                         <br>
                         <label for="valor">Valor:</label>
-                        <input class="form-control form-control-lg" type="text" name="valor" id="valor" value="<?= (isset($imovel)) ? $imovel->vl_valor : ''; ?> ">
+                        <input class="form-control form-control-lg" type="text" name="valor" id="valor" value="<?= (isset($imoveis)) ? $imoveis->vl_valor : ''; ?> ">
                         <br>
                         <button type="submit" class="btn btn-outline-success">Enviar</button>
                         <button type="reset" class="btn btn-outline-secondary">Limpar</button>
