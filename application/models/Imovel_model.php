@@ -3,6 +3,10 @@
 class Imovel_model extends CI_Model {
 
     public function getAll() {
+        $this->db->select('tb_imovel.*,tx_titulo as titulo,tb_tipo.tx_descricao as tipo,tb_status.tx_descricao as status,tb_categoria.tx_descricao as categoria');
+        $this->db->join('tb_tipo', 'tb_tipo.id_tipo = tb_imovel.cd_tipo', 'inner');
+        $this->db->join('tb_status', 'tb_status.id_status = tb_imovel.cd_status', 'inner');
+        $this->db->join('tb_categoria', 'tb_categoria.id_categoria = tb_imovel.cd_categoria', 'inner');
         //Busca os dados da tabela imovel no Banco de Dados
         $query = $this->db->get('tb_imovel');
 
@@ -23,9 +27,30 @@ class Imovel_model extends CI_Model {
         return $query->row(0);
     }
 
+    public function getTipo() {
+        //Pega  a tabela tipo no Banco de Dados.
+        $query = $this->db->get('tb_tipo');
+        //Retorna em formato de array
+        return $query->result();
+    }
+
+    public function getStatus() {
+        //Pega  a tabela status no Banco de Dados.
+        $query = $this->db->get('tb_status');
+        //Retorna em formato de array
+        return $query->result();
+    }
+
+    public function getCategoria() {
+        //Pega  a tabela categoria no Banco de Dados.
+        $query = $this->db->get('tb_categoria');
+        //Retorna em formato de array
+        return $query->result();
+    }
+
     public function update($id, $data = array()) {
         if ($id > 0) {
-            //filtra o cliente que será alterado
+            //filtra a pontuação que será alterada
             $this->db->where('id_imovel', $id);
             //altera os dados de acordo com o recebido por parametro
             $this->db->update('tb_imovel', $data);

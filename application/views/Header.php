@@ -18,19 +18,54 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active dropdown">
-                        <a href="#" id="menuImoveis" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Imoveis</a>
+                        <a href="#" id="menuImoveis" class="nav-link dropdown-toggle ml-5" role="button" data-toggle="dropdown">Imoveis</a>
                         <div class="dropdown-menu" aria-labelledby="menuImoveis">
                             <a class="dropdown-item" href="<?= $this->config->base_url() . 'Imovel/cadastrar' ?>">Cadastrar</a>
                             <a class="dropdown-item" href="<?= $this->config->base_url() . 'Imovel/listar' ?>">Visualizar</a>
                         </div>
                     </li>
                     <li class="nav-item active dropdown">
-                        <a href="#" id="menuCategoria" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Categorias</a>
+                        <a href="#" id="menuCategoria" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Categorias</a>
                         <div class="dropdown-menu" aria-labelledby="menuCategoria">
                             <a class="dropdown-item" href="<?= $this->config->base_url() . 'Categoria/cadastrar' ?>">Cadastrar</a>
                             <a class="dropdown-item" href="<?= $this->config->base_url() . 'Categoria/listar' ?>">Visualizar</a>
                         </div>
                     </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuDetalhe" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Detalhes</a>
+                        <div class="dropdown-menu" aria-labelledby="menuDetalhe">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Detalhe/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Detalhe/listar' ?>">Visualizar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuProximidade" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Proximidades</a>
+                        <div class="dropdown-menu" aria-labelledby="menuProximidade">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Proximidade/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Proximidade/listar' ?>">Visualizar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuStatus" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Status</a>
+                        <div class="dropdown-menu" aria-labelledby="menuStatus">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Status/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Status/listar' ?>">Visualizar</a>
+                        </div>
+                    </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuTipo" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Tipos</a>
+                        <div class="dropdown-menu" aria-labelledby="menuTipo">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Tipo/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Tipo/listar' ?>">Visualizar</a>
+                        </div>
+                    </li>
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $this->config->base_url() . 'Admin/sair' ?>">
+                                <i class="fas fa-sign-out-alt ml-5"></i> Sair
+                            </a>
+                        </li>
+                    </ul>
 
             </div>
         </nav>

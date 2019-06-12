@@ -12,35 +12,28 @@
         }
         ?>
     </div>  
-    <div class='mt-5 table-responsive shadow'>
-        <table class="table" id="example">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Título</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Opções</th>
-                </tr>
-            </thead>
-            <tbody>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-7">
                 <?php
                 foreach ($imoveis as $i) {
-                    echo '<tr>';
-                    echo '<td>' . $i->tx_titulo . '</td>';
-                    echo '<td>' . $i->tx_status . '</td>';
-                    echo '<td>' . $i->tx_descricao . '</td>';
-                    echo '<td>' . 'R$ ' . $i->vl_valor . '</td>';
-                    echo '<td>'
-                    . '<a class="btn btn-sm btn-outline-secondary mr-2"  role="button"   href="' . $this->config->base_url() . 'Imovel/alterar/' . $i->id_imovel . '"><i class="fas fa-pen"></i> Alterar </a>'
-                    . '<a class="btn btn-sm btn-outline-secondary "  role="button"   href="' . $this->config->base_url() . 'Imovel/deletar/' . $i->id_imovel . '"><i class="fas fa-times"></i> Deletar </a>'
-                    . '</td>';
 
-                    echo '</tr>';
+                    echo '<button type="button" class="btn btn-light mr-4 mb-3 mt-4 shadow text-center">';
+                    echo '<h4 class="mb-5 pt-2"> Titulo: ' . $i->titulo . '</h4>';
+                    echo '<hr>';
+                    echo '<h6 class="mb-3"> Status: ' . $i->status . '</h6>';
+                    echo '<h6 class="mb-3"> Tipo: ' . $i->tipo . '</h6>';
+                    echo '<h6 class="mb-3"> Categoria: ' . $i->categoria . '</h6>';
+                    echo '<h6 class="mb-3"> Descrição: ' . $i->tx_descricao . '</h6>';
+                    echo '<h6 class="mb-3"> Valor: R$ ' . $i->vl_valor . '</h6>';
+                    echo '<a class="pl-2" href="' . $this->config->base_url() . 'Imovel/alterar/' . $i->id_imovel . '"><i class="fas fa-pen text-dark border rounded shadow-sm py-1 px-2"></i></a>';
+                    echo '<a class="pl-2 ml-2 mr-3" href="' . $this->config->base_url() . 'Imovel/deletar/' . $i->id_imovel . '"><i class="fas fa-times text-dark border rounded shadow-sm py-1 px-2"></i></a>';
+                    echo '</button>';
                 }
                 ?>
-            </tbody>
-        </table>
+            </div>
+        </div>
     </div>
 </div>
-
