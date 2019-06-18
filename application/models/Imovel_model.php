@@ -15,8 +15,17 @@ class Imovel_model extends CI_Model {
 
     public function insert($data = array()) {
         $this->db->insert('tb_imovel', $data);
+
+
+        return $this->db->insert_id();
+    }
+
+    public function insertDetalhes($dataDetalhes = array()) {
+        $this->db->insert('tb_imovelTipodetalhes', $dataDetalhes);
+
         return $this->db->affected_rows();
     }
+    
 
     //Método que recebe um id por parâmetro e busca ele no banco de Dados.
     public function getOne($id) {
@@ -48,6 +57,23 @@ class Imovel_model extends CI_Model {
         return $query->result();
     }
 
+    public function getDetalhes() {
+
+        $query = $this->db->get('tb_tipodetalhes');
+
+        return $query->result();
+    }
+    
+       public function getDetalhesTipo() {
+        
+        $this->db->select('tb_imoveltipodetalhes.*,nm_valor as valor,tb_tipodetalhes.tx_descricao as descricao' );
+        $this->db->join('tb_tipodetalhes','tb_tipodetalhes.id_tipodetalhes = tb_imoveltipodetalhes.cd_tipodetalhes','inner');
+
+        $query = $this->db->get('tb_imoveltipodetalhes');
+
+        return $query->result();
+    }
+
     public function update($id, $data = array()) {
         if ($id > 0) {
             //filtra a pontuação que será alterada
@@ -63,6 +89,10 @@ class Imovel_model extends CI_Model {
 
     public function delete($id) {
         if ($id > 0) {
+            
+            $this->db->where('cd_imovel', $id);
+            $this->db->delete('tb_imoveltipodetalhes');
+           
             $this->db->where('id_imovel', $id);
             $this->db->delete('tb_imovel');
 
