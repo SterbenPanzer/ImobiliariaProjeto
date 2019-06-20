@@ -31,11 +31,11 @@ class Imovel extends CI_Controller {
         $this->load->view('Footer');
     }
 
-    public function listarDetalhes() {
-        $data['imoveis'] = $this->Imovel_model->getAll();
+    public function listarDetalhes($id) {
+        $data['imoveis'] = $this->Imovel_model->getOne($id);
         $data['detalhes'] = $this->Imovel_model->getDetalhes();
         $data['detalhestipo'] = $this->Imovel_model->getDetalhesTipo();
-
+        $data['tipodetalhes'] = $this->Imovel_model->getOneDetalhes($id);
         $this->load->view('Header');
         $this->load->view('ListaImoveldetalhes', $data);
         $this->load->view('Footer');
@@ -74,7 +74,6 @@ class Imovel extends CI_Controller {
 
 
             //Chama o método insert do Model passando os dados a inserir, e já valida se teve linhas afetadas.
-            $this->Imovel_model->insertDetalhes($dataDetalhes);
             $id_imovel = $this->Imovel_model->insert($data);
             if ($id_imovel > 0) {
                 foreach ($this->input->post('detalhe') as $d => $v) {
@@ -84,6 +83,7 @@ class Imovel extends CI_Controller {
                         'cd_tipodetalhes' => $d
                     );
                 }
+            $this->Imovel_model->insertDetalhes($dataDetalhes);
 
                 //Salva uma mensagem rapida na sessão.
                 $this->session->set_flashdata('mensagem', 'Imovel cadastrado com sucesso!!!');
@@ -113,8 +113,7 @@ class Imovel extends CI_Controller {
                 $data['status'] = $this->Imovel_model->getStatus();
                 $data['categorias'] = $this->Imovel_model->getCategoria();
                 $data['detalhes'] = $this->Imovel_model->getDetalhes();
-                //Monta a variavel data para mandar dados para a view e chama o metodo getOne da pontuacao model
-                //para resgatar os dados da pontuação a ser alterado.
+
                 $data['imoveis'] = $this->Imovel_model->getOne($id);
 
                 $this->load->view('Header');

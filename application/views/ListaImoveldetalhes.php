@@ -1,6 +1,7 @@
 <div class="container mt-5">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= $this->config->base_url() . 'Imovel/listar' ?>">Voltar</a></li>
             <li class="breadcrumb-item active" aria-current="page">Visualização de detalhes dos imóvel</li>
         </ol>
     </nav>
@@ -19,14 +20,13 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <?php
-                        foreach ($imoveis as $i) {
-                            echo '<h4 class="pt-2">' . $i->titulo . '</h4>';
+                            echo '<h4 class="pt-2">' . $imoveis->tx_titulo . '</h4>';
                             echo '<hr>';
-                            echo '<h6 class="mb-3"> Status: ' . $i->status . '</h6>';
-                            echo '<h6 class="mb-3"> Tipo: ' . $i->tipo . '</h6>';
-                            echo '<h6 class="mb-3"> Categoria: ' . $i->categoria . '</h6>';
-                            echo '<h6 class="mb-3"> Valor: R$ ' . $i->vl_valor . '</h6>';
-                        }
+                            echo '<h6 class="mb-3"> Status: ' . $imoveis->status . '</h6>';
+                            echo '<h6 class="mb-3"> Tipo: ' . $imoveis->tipo . '</h6>';
+                            echo '<h6 class="mb-3"> Categoria: ' . $imoveis->categoria . '</h6>';
+                            echo '<h6 class="mb-3"> Valor: R$ ' . $imoveis->vl_valor . '</h6>';
+                      
                         ?>
                     </div> 
                 </div>
@@ -71,7 +71,7 @@
                         <h4>Detalhes</h4>
                         <hr>
                         <?php
-                        foreach ($detalhestipo as $d) {
+                        foreach ($tipodetalhes as $d) {
                             echo '<h6 class="mb-3">' . $d->descricao . ' : ' . $d->valor . '</h6>';
                         }
                         ?>
@@ -84,9 +84,7 @@
                         <h4>Descrição</h4>
                         <hr>
                         <?php
-                        foreach ($imoveis as $i) {
-                            echo '<h6 class="mb-3">' . $i->tx_descricao . '</h6>';
-                        }
+                            echo '<h6 class="mb-3">' . $imoveis->tx_descricao . '</h6>';
                         ?>
                     </div>
                 </div>

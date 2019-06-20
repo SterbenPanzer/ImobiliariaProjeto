@@ -33,12 +33,12 @@
                                 </div>
                                 <br>
                                 <select class="custom-select mb-5" name="id_tipo" id="id_tipo">
-                                    <option selected hidden disabled>Selecione o tipo do imóvel.</option>
+                                    <option <?= (isset($tipos))?'selected' : ''?> hidden disabled>Selecione o tipo do imóvel.</option>
                                     <?php
                                     if ($tipos != null) {
                                         foreach ($tipos as $t) {
                                             echo '<option ';
-                                            ((isset($imoveis)) && $t->id_tipo == $imoveis->id_imovel) ? 'selected' : '';
+                                            echo ((isset($imoveis)) && $t->id_tipo == $imoveis->cd_tipo) ? 'selected' : '';
                                             echo ' value="' . $t->id_tipo . '">' . $t->tx_descricao . '</option>';
                                         }
                                     }
@@ -46,12 +46,12 @@
                                 </select>
                                 <br>
                                 <select class="custom-select mb-5" name="id_status" id="id_status">
-                                    <option selected hidden disabled>Selecione o status do imóvel.</option>
+                                    <option  <?= (isset($tipos))?'selected' : ''?> hidden disabled>Selecione o status do imóvel.</option>
                                     <?php
                                     if ($status != null) {
                                         foreach ($status as $s) {
                                             echo '<option ';
-                                            ((isset($imoveis)) && $s->id_status == $imoveis->id_imovel) ? 'selected' : '';
+                                            echo ((isset($imoveis)) && $s->id_status == $imoveis->cd_status) ? 'selected' : '';
                                             echo ' value="' . $s->id_status . '">' . $s->tx_descricao . '</option>';
                                         }
                                     }
@@ -59,12 +59,12 @@
                                 </select>
                                 <br>
                                 <select class="custom-select mb-5" name="id_categoria" id="id_categoria">
-                                    <option selected hidden disabled>Selecione a categoria do imóvel.</option>
+                                    <option  <?= (isset($tipos))?'selected' : ''?> hidden disabled>Selecione a categoria do imóvel.</option>
                                     <?php
                                     if ($categorias != null) {
                                         foreach ($categorias as $c) {
                                             echo '<option ';
-                                            ((isset($imoveis)) && $c->id_categoria == $imoveis->id_imovel) ? 'selected' : '';
+                                            echo ((isset($imoveis)) && $c->id_categoria == $imoveis->cd_categoria) ? 'selected' : '';
                                             echo ' value="' . $c->id_categoria . '">' . $c->tx_descricao . '</option>';
                                         }
                                     }
@@ -93,7 +93,7 @@
                                             . $d->tx_descricao;
                                             echo '</th>';
                                             echo '<th width="25%">'
-                                            . '<input class="form-control form-control-md" type="number" name="detalhe[' . $d->id_tipodetalhes . ']" id="detalhe" value="">';
+                                            . '<input class="form-control form-control-md" type="number" name="detalhe[]" id="detalhe" value="">';
                                             echo '</th>';
                                             echo '</tr>';
                                         }
