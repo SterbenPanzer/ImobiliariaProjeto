@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h2>Informações do imóvel</h2>
-                            <form acttion="" method="POST">
+                            <form acttion="" method="POST" enctype="multipart/form-data">
                                 <hr>
                                 <br>
                                 <input class="form-control form-control-lg" type="hidden" name='id' id='id' value='<?= (isset($imoveis)) ? $imoveis->id_imovel : ''; ?>' >
@@ -32,8 +32,22 @@
                                     <input  class="form-control form-control-lg" type="text" name="titulo" id="titulo"  value="<?= (isset($imoveis)) ? $imoveis->tx_titulo : ''; ?> ">
                                 </div>
                                 <br>
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" name="userfile" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+                                            <label class="custom-file-label" for="inputGroupFile03">Selecione uma imagem</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                                if (!empty($galerias->imagem) && file_exists('./uploads/' . $galerias->imagem)) {
+                                    echo '<div class="form-group text-center"><img src="' . base_url('uploads/' . $galerias->imagem) . '" width="100" height="100"></div>';
+                                }
+                                ?>
+                                <br>
                                 <select class="custom-select mb-5" name="id_tipo" id="id_tipo">
-                                    <option <?= (isset($tipos))?'selected' : ''?> hidden disabled>Selecione o tipo do imóvel.</option>
+                                    <option <?= (isset($tipos)) ? 'selected' : '' ?> hidden disabled>Selecione o tipo do imóvel.</option>
                                     <?php
                                     if ($tipos != null) {
                                         foreach ($tipos as $t) {
@@ -46,7 +60,7 @@
                                 </select>
                                 <br>
                                 <select class="custom-select mb-5" name="id_status" id="id_status">
-                                    <option  <?= (isset($tipos))?'selected' : ''?> hidden disabled>Selecione o status do imóvel.</option>
+                                    <option  <?= (isset($tipos)) ? 'selected' : '' ?> hidden disabled>Selecione o status do imóvel.</option>
                                     <?php
                                     if ($status != null) {
                                         foreach ($status as $s) {
@@ -59,7 +73,7 @@
                                 </select>
                                 <br>
                                 <select class="custom-select mb-5" name="id_categoria" id="id_categoria">
-                                    <option  <?= (isset($tipos))?'selected' : ''?> hidden disabled>Selecione a categoria do imóvel.</option>
+                                    <option  <?= (isset($tipos)) ? 'selected' : '' ?> hidden disabled>Selecione a categoria do imóvel.</option>
                                     <?php
                                     if ($categorias != null) {
                                         foreach ($categorias as $c) {

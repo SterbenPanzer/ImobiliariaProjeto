@@ -24,6 +24,11 @@
                 echo '<div class="card mb-5" style="width: 18rem;">';
                 echo ' <div class="card-body">';
                 echo '<h4 class="pt-2">' . $i->titulo . '</h4>';
+            foreach ($galerias as $g) {
+                if($i->id_imovel == $g->cd_imovel){
+                echo '<img class="img-fluid mb-2" style="max-height:150px; max-width:150px;" src="'. base_url('uploads/'.$g->im_imagem) .'">';
+                }
+            }
                 echo '<hr>';
                 echo '<h6 class="mb-3"> Tipo: ' . $i->tipo . '</h6>';
                 echo '<h6 class="mb-3"> Categoria: ' . $i->categoria . '</h6>';

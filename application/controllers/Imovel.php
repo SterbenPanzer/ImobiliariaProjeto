@@ -25,6 +25,7 @@ class Imovel extends CI_Controller {
         $data['imoveis'] = $this->Imovel_model->getAll();
         $data['detalhes'] = $this->Imovel_model->getDetalhes();
         $data['detalhestipo'] = $this->Imovel_model->getDetalhesTipo();
+        $data['galerias'] = $this->Imovel_model->getImagem();
 
         $this->load->view('Header');
         $this->load->view('ListaImovel', $data);
@@ -72,9 +73,37 @@ class Imovel extends CI_Controller {
                 'cd_categoria' => $this->input->post('id_categoria')
             );
 
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('userfile')) {
+                //Cria uma sessão com o error e redireciona
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-succsess">' . $error . '</div>');
+                redirect('Imovel/cadastrar');
+                exit();
+            } else {
+                //Pega o nome do arquivo que foi enviado e adiciona no array $data
+                
+                
+                
+            $id_imovel = $this->Imovel_model->insert($data);
+            
+            
+                if ($id_imovel > 0) {
+                    $dataImagem = array(
+                        'im_imagem' => $this->upload->data('file_name'),
+                        'cd_imovel' => $id_imovel
+                    );
+                }
+                $this->Imovel_model->insertImagem($dataImagem);
+            }
+
 
             //Chama o método insert do Model passando os dados a inserir, e já valida se teve linhas afetadas.
-            $id_imovel = $this->Imovel_model->insert($data);
             if ($id_imovel > 0) {
                 foreach ($this->input->post('detalhe') as $d => $v) {
                     $dataDetalhes = array(
@@ -83,12 +112,13 @@ class Imovel extends CI_Controller {
                         'cd_tipodetalhes' => $d
                     );
                 }
-            $this->Imovel_model->insertDetalhes($dataDetalhes);
+                $this->Imovel_model->insertDetalhes($dataDetalhes);
 
                 //Salva uma mensagem rapida na sessão.
                 $this->session->set_flashdata('mensagem', 'Imovel cadastrado com sucesso!!!');
                 redirect('Imovel/listar');
             } else {
+                unlink('./uploads/' . $data['im_imagem']);
                 $this->session->set_flashdata('mensagem', 'Erro ao cadastrar imovel!!!');
                 redirect('Imovel/cadastrar');
             }
@@ -128,6 +158,35 @@ class Imovel extends CI_Controller {
                     'cd_status' => $this->input->post('id_status'),
                     'cd_categoria' => $this->input->post('id_categoria')
                 );
+                
+                 $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('userfile')) {
+                //Cria uma sessão com o error e redireciona
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('mensagem', '<div class="alert alert-succsess">' . $error . '</div>');
+                redirect('Imovel/cadastrar');
+                exit();
+            } else {
+                //Pega o nome do arquivo que foi enviado e adiciona no array $data
+                
+                
+                
+            $id_imovel = $this->Imovel_model->insert($data);
+            
+            
+                if ($id_imovel > 0) {
+                    $dataImagem = array(
+                        'im_imagem' => $this->upload->data('file_name'),
+                        'cd_imovel' => $id_imovel
+                    );
+                }
+                $this->Imovel_model->insertImagem($dataImagem);
+            }
 
                 //chama o método update da Pontuacao_model e já valida se teve linhas afetadas.
                 if ($this->Imovel_model->update($id, $data)) {

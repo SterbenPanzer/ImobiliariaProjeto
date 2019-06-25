@@ -3,9 +3,11 @@ div.dataTables_length label {
     float: left;
     text-align: left;
 }
+
 .imgMax{
     max-height: 240px;
 }  
+
 div.dataTables_length select {
     width: 75px;
     margin-left:30px;
@@ -33,3 +35,80 @@ table {
     margin: 1em 0;
     clear: both;
 }
+
+.MenuSimple {
+    font-family: Arial;
+    font-size: 14px;
+}
+
+.MenuSimple1{
+    margin-left: 900px;
+}
+
+.MenuSimpleGeral {
+    height: 30px;
+}
+
+.Icon1 {
+    color: darkblue;
+}
+
+.Icon3 {
+    color: brown;
+}
+
+.Icon4 {
+    color: red;
+}
+
+.MenuSimpleGeral2{
+   font-size: 50px;
+   font-family: sans-serif;
+}
+
+#ColorDuo {
+    color: orangered;
+}
+
+.TextOption{
+    font-size: 16px;
+    color: black;
+    font-family: sans-serif;
+}
+
+.TextOption2{
+    font-size: 18px;
+    color: orangered;
+    font-family: sans-serif;
+}
+
+.SelectOption {
+    width: 150px;
+}
+.SelectOption2 {
+    border-color: orangered;
+    color: orangered;
+    width: 160px;
+}
+
+.imgMax2{
+    max-height: 300px;
+} 
+.HeaderOption {
+    height: 40px;
+}
+
+.TextOption3 {
+    font-size: 18px;
+}
+
+.TextOption4 {
+ margin-left: 80px;
+ font-family: Arial;
+}
+
+.BotonOption {
+    border-color: black;
+    color:orangered;
+}
+

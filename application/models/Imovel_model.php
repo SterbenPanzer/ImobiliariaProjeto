@@ -26,6 +26,12 @@ class Imovel_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    public function insertImagem($dataImagem = array()) {
+        $this->db->insert('tb_galeria', $dataImagem);
+
+        return $this->db->affected_rows();
+    }
+
     //Método que recebe um id por parâmetro e busca ele no banco de Dados.
     public function getOne($id) {
         $this->db->select('tb_imovel.*,tx_titulo as titulo,tb_tipo.tx_descricao as tipo,tb_status.tx_descricao as status,tb_categoria.tx_descricao as categoria');
@@ -33,7 +39,7 @@ class Imovel_model extends CI_Model {
         $this->db->join('tb_tipo', 'tb_tipo.id_tipo = tb_imovel.cd_tipo', 'inner');
         $this->db->join('tb_status', 'tb_status.id_status = tb_imovel.cd_status', 'inner');
         $this->db->join('tb_categoria', 'tb_categoria.id_categoria = tb_imovel.cd_categoria', 'inner');
-        
+
         $query = $this->db->get('tb_imovel');
         //retorna a primeira linha
         return $query->row(0);
@@ -46,15 +52,15 @@ class Imovel_model extends CI_Model {
         return $query->result();
     }
 
-    public function getOneDetalhes($id){
+    public function getOneDetalhes($id) {
         $this->db->select('tb_imoveltipodetalhes.*,nm_valor as valor,tb_tipodetalhes.tx_descricao as descricao');
-        $this->db->where('cd_imovel',$id);
+        $this->db->where('cd_imovel', $id);
         $this->db->join('tb_tipodetalhes', 'tb_tipodetalhes.id_tipodetalhes = tb_imoveltipodetalhes.cd_tipodetalhes', 'inner');
         $query = $this->db->get('tb_imoveltipodetalhes');
         //retorna a primeira linha
         return $query->result();
-        
     }
+
     public function getStatus() {
 
         //Pega  a tabela status no Banco de Dados.
@@ -62,8 +68,6 @@ class Imovel_model extends CI_Model {
         //Retorna em formato de array
         return $query->result();
     }
-    
-    
 
     public function getCategoria() {
         //Pega  a tabela categoria no Banco de Dados.
@@ -89,6 +93,15 @@ class Imovel_model extends CI_Model {
         return $query->result();
     }
 
+    public function getImagem() {
+        $this->db->select('tb_galeria.*');
+        $this->db->join('tb_imovel', 'tb_imovel.id_imovel=tb_galeria.cd_imovel', 'left');
+
+        $query = $this->db->get('tb_galeria');
+
+        return $query->result();
+    }
+
     public function update($id, $data = array()) {
         if ($id > 0) {
             //filtra a pontuação que será alterada
@@ -104,7 +117,10 @@ class Imovel_model extends CI_Model {
 
     public function delete($id) {
         if ($id > 0) {
-
+            
+            $this->db->where('cd_imovel', $id);
+            $this->db->delete('tb_galeria');
+            
             $this->db->where('cd_imovel', $id);
             $this->db->delete('tb_imoveltipodetalhes');
 
