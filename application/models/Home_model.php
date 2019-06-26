@@ -9,6 +9,13 @@ class Home_model extends CI_Model {
         //Retorna em formato de array
         return $query->result();
     }
+    
+    public function getTipo() {
+        
+        $query = $this->db->get('tb_tipo');
+        
+        return $query->result();
+    }
 
 }
 ?>

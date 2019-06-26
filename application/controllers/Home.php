@@ -18,18 +18,14 @@ class Home extends CI_Controller {
     public function listar() {
 
         $data['categorias'] = $this->Home_model->getCategoria();
+        $data['tipos'] = $this->Home_model->getTipo();
 
         $this->load->view('HeaderUser');
         $this->load->view('HomeUser',$data);
         $this->load->view('FooterUser');
     }
 
-      public function getCategoria() {
-        //Pega  a tabela categoria no Banco de Dados.
-        $query = $this->db->get('tb_categoria');
-        //Retorna em formato de array
-        return $query->result();
-    }
+    
 }
 
 ?>

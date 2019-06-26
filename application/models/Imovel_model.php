@@ -21,7 +21,7 @@ class Imovel_model extends CI_Model {
     }
 
     public function insertDetalhes($dataDetalhes = array()) {
-        $this->db->insert('tb_imovelTipodetalhes', $dataDetalhes);
+        $this->db->insert('tb_imoveltipodetalhes', $dataDetalhes);
 
         return $this->db->affected_rows();
     }
@@ -52,10 +52,10 @@ class Imovel_model extends CI_Model {
         return $query->result();
     }
 
-    public function getOneDetalhes($id) {
-        $this->db->select('tb_imoveltipodetalhes.*,nm_valor as valor,tb_tipodetalhes.tx_descricao as descricao');
-        $this->db->where('cd_imovel', $id);
+    public function getDetalhesImovel($id) {
+        $this->db->select('tb_imoveltipodetalhes.*,nm_valor as valor,tb_tipodetalhes.tx_descricao as descricao');        
         $this->db->join('tb_tipodetalhes', 'tb_tipodetalhes.id_tipodetalhes = tb_imoveltipodetalhes.cd_tipodetalhes', 'inner');
+        $this->db->where('cd_imovel', $id);
         $query = $this->db->get('tb_imoveltipodetalhes');
         //retorna a primeira linha
         return $query->result();
@@ -114,6 +114,19 @@ class Imovel_model extends CI_Model {
             return false;
         }
     }
+    
+       public function updateImagem($id, $dataImagem = array()) {
+        if ($id > 0) {
+            //filtra a pontuação que será alterada
+            $this->db->where('id_galeria', $id);
+            //altera os dados de acordo com o recebido por parametro
+            $this->db->update('tb_galeria', $dataImagem);
+            //retorno do numero de linhas afetadas
+            return $this->db->affected_rows();
+        } else {
+            return false;
+        }
+    }
 
     public function delete($id) {
         if ($id > 0) {
@@ -127,6 +140,19 @@ class Imovel_model extends CI_Model {
             $this->db->where('id_imovel', $id);
             $this->db->delete('tb_imovel');
 
+            return $this->db->affected_rows();
+        } else {
+            return false;
+        }
+    }
+    
+      public function deleteImagem($id) {
+        if ($id > 0) {
+            
+            $this->db->where('cd_imovel', $id);
+            $this->db->delete('tb_galeria');
+            
+            
             return $this->db->affected_rows();
         } else {
             return false;

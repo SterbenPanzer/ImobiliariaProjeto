@@ -107,7 +107,7 @@
                                             . $d->tx_descricao;
                                             echo '</th>';
                                             echo '<th width="25%">'
-                                            . '<input class="form-control form-control-md" type="number" name="detalhe[]" id="detalhe" value="">';
+                                            . '<input class="form-control form-control-md" type="number" name="detalhe['.$d->id_tipodetalhes.']" id="detalhe" value="">';
                                             echo '</th>';
                                             echo '</tr>';
                                         }

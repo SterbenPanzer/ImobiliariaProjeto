@@ -16,8 +16,17 @@
                                     }
                                     ?>
                         </select>
-                        <select class="form-control my-4 ml-5 SelectOption" name="" id="">
-                            <option>Tipo</option>
+                        <select class="form-control my-4 ml-5 SelectOption" name="id_tipo" id="id_tipo">
+                            <option selected hidden disabled>Tipo</option>
+                               <?php
+                                    if ($tipos != null) {
+                                        foreach ($tipos as $t) {
+                                            echo '<option ';
+                                            echo ((isset($imoveis)) && $t->id_tipo == $imoveis->cd_tipo) ? 'selected' : '';
+                                            echo ' value="' . $t->id_tipo . '">' . $t->tx_descricao . '</option>';
+                                        }
+                                    }
+                                    ?>
                         </select>
                     </div>
                     <div class="col-md-3">
