@@ -59,6 +59,13 @@
                             <a class="dropdown-item" href="<?= $this->config->base_url() . 'Tipo/listar' ?>">Visualizar</a>
                         </div>
                     </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuFaleconosco" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Contato</a>
+                        <div class="dropdown-menu" aria-labelledby="menuFaleconosco">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Faleconosco/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Faleconosco/listar' ?>">Visualizar</a>
+                        </div>
+                    </li>
                     <ul class="navbar-nav justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $this->config->base_url() . 'Admin/sair' ?>">

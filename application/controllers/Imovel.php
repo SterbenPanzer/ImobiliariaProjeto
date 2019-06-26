@@ -183,12 +183,10 @@ class Imovel extends CI_Controller {
 
                     $this->Imovel_model->deleteImagem($id);
 
-                    if ($id_imovel > 0) {
                         $dataImagem = array(
                             'im_imagem' => $this->upload->data('file_name'),
                             'cd_imovel' => $id_imovel
                         );
-                    }
                     $this->Imovel_model->insertImagem($dataImagem);
                 }
 
@@ -197,6 +195,7 @@ class Imovel extends CI_Controller {
                     $this->session->set_flashdata('mensagem', 'Imóvel alterado com sucesso!!!');
                     redirect('Imovel/listar');
                 } else {
+                    unlink('./uploads/' . $data['im_imagem']);
                     $this->session->set_flashdata('mensagem', 'Erro ao alterar imóvel...');
                     redirect('Imovel/alterar' . $id);
                 }
