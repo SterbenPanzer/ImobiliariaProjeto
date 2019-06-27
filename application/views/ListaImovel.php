@@ -31,6 +31,7 @@
             }
                 echo '<hr>';
                 echo '<h6 class="mb-3"> Tipo: ' . $i->tipo . '</h6>';
+                echo '<h6 class="mb-3"> Bairro: ' . $i->bairro . '</h6>';
                 echo '<h6 class="mb-3"> Categoria: ' . $i->categoria . '</h6>';
                 echo '<h6 class="mb-3"> Valor: R$ ' . $i->vl_valor . '</h6>';
                 echo '<a class="pl-2" href="' . $this->config->base_url() . 'Imovel/alterar/' . $i->id_imovel . '"><i class="fas fa-pen text-dark border rounded shadow-sm py-1 px-2"></i></a>';

@@ -16,6 +16,19 @@ class Home_model extends CI_Model {
         
         return $query->result();
     }
+    
+    public function getContato() {
+        
+        $query = $this->db->get('tb_tipo');
+        
+        return $query->result();
+    }
+    public function getBairro() {
+        
+        $query = $this->db->get('tb_bairro');
+        
+        return $query->result();
+    }
 
 }
 ?>

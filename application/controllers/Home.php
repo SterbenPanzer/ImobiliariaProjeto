@@ -8,6 +8,7 @@ class Home extends CI_Controller {
         $this->load->model('Home_model');
         $this->load->model('Categoria_model');
         $this->load->model('Imovel_model');
+        $this->load->model('Faleconosco_model');
     }
 
     public function index() {
@@ -19,6 +20,11 @@ class Home extends CI_Controller {
 
         $data['categorias'] = $this->Home_model->getCategoria();
         $data['tipos'] = $this->Home_model->getTipo();
+        $data['bairros'] = $this->Home_model->getBairro();
+        $data['contatos'] = $this->Faleconosco_model->getAll();
+        $data['imoveis'] = $this->Imovel_model->getAll();
+        $data['galerias'] = $this->Imovel_model->getImagem();
+        $data['tipodetalhes'] = $this->Imovel_model->getDetalhesImovel2();
 
         $this->load->view('HeaderUser');
         $this->load->view('HomeUser',$data);

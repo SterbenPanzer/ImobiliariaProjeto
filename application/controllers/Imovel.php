@@ -13,6 +13,7 @@ class Imovel extends CI_Controller {
         $this->load->model('Tipo_model');
         $this->load->model('Status_model');
         $this->load->model('Categoria_model');
+        $this->load->model('Bairro_model');
     }
 
     public function index() {
@@ -26,7 +27,7 @@ class Imovel extends CI_Controller {
         $data['detalhes'] = $this->Imovel_model->getDetalhes();
         $data['detalhestipo'] = $this->Imovel_model->getDetalhesTipo();
         $data['galerias'] = $this->Imovel_model->getImagem();
-
+        
         $this->load->view('Header');
         $this->load->view('ListaImovel', $data);
         $this->load->view('Footer');
@@ -47,6 +48,7 @@ class Imovel extends CI_Controller {
         $this->form_validation->set_rules('valor', 'valor', 'required');
         $this->form_validation->set_rules('id_tipo', 'id_tipo', 'required');
         $this->form_validation->set_rules('id_status', 'id_status', 'required');
+        $this->form_validation->set_rules('id_bairro', 'id_bairro', 'required');
         $this->form_validation->set_rules('id_categoria', 'id_categoria', 'required');
 
         //verifica se os dados foram atendidos corretamente.
@@ -55,6 +57,7 @@ class Imovel extends CI_Controller {
             $data['tipos'] = $this->Imovel_model->getTipo();
             $data['status'] = $this->Imovel_model->getStatus();
             $data['categorias'] = $this->Imovel_model->getCategoria();
+            $data['bairros'] = $this->Imovel_model->getBairro();
             //Se não tiver passado na validação,então o formulario sera carregado.
             $this->load->view('Header');
             $this->load->view('FormImovel', $data);
@@ -68,7 +71,8 @@ class Imovel extends CI_Controller {
                 'vl_valor' => $this->input->post('valor'),
                 'cd_tipo' => $this->input->post('id_tipo'),
                 'cd_status' => $this->input->post('id_status'),
-                'cd_categoria' => $this->input->post('id_categoria')
+                'cd_categoria' => $this->input->post('id_categoria'),
+                'cd_bairro' => $this->input->post('id_bairro')
             );
 
             $config['upload_path'] = './uploads/';
@@ -137,6 +141,7 @@ class Imovel extends CI_Controller {
             $this->form_validation->set_rules('valor', 'valor', 'required');
             $this->form_validation->set_rules('id_tipo', 'id_tipo', 'required');
             $this->form_validation->set_rules('id_status', 'id_status', 'required');
+            $this->form_validation->set_rules('id_bairro', 'id_bairro', 'required');
             $this->form_validation->set_rules('id_categoria', 'id_categoria', 'required');
             //valida se o formulario ja foi preenchida
             if ($this->form_validation->run() == false) {
@@ -146,6 +151,7 @@ class Imovel extends CI_Controller {
                 $data['status'] = $this->Imovel_model->getStatus();
                 $data['categorias'] = $this->Imovel_model->getCategoria();
                 $data['detalhes'] = $this->Imovel_model->getDetalhes();
+                $data['bairros'] = $this->Imovel_model->getBairro();
 
                 $data['imoveis'] = $this->Imovel_model->getOne($id);
 
@@ -159,7 +165,8 @@ class Imovel extends CI_Controller {
                     'vl_valor' => $this->input->post('valor'),
                     'cd_tipo' => $this->input->post('id_tipo'),
                     'cd_status' => $this->input->post('id_status'),
-                    'cd_categoria' => $this->input->post('id_categoria')
+                    'cd_categoria' => $this->input->post('id_categoria'),
+                    'cd_bairro' => $this->input->post('id_bairro')
                 );
 
                 $config['upload_path'] = './uploads/';
@@ -179,13 +186,11 @@ class Imovel extends CI_Controller {
 
 
 
-                    $id_imovel = $this->Imovel_model->update($id,$data);
-
                     $this->Imovel_model->deleteImagem($id);
 
                         $dataImagem = array(
                             'im_imagem' => $this->upload->data('file_name'),
-                            'cd_imovel' => $id_imovel
+                            'cd_imovel' => $id
                         );
                     $this->Imovel_model->insertImagem($dataImagem);
                 }
@@ -197,7 +202,7 @@ class Imovel extends CI_Controller {
                 } else {
                     unlink('./uploads/' . $data['im_imagem']);
                     $this->session->set_flashdata('mensagem', 'Erro ao alterar imóvel...');
-                    redirect('Imovel/alterar' . $id);
+                    redirect('Imovel/alterar/' . $id);
                 }
             }
         } else {

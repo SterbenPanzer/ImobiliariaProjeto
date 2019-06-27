@@ -24,6 +24,7 @@
                             echo '<hr>';
                             echo '<h6 class="mb-3"> Status: ' . $imoveis->status . '</h6>';
                             echo '<h6 class="mb-3"> Tipo: ' . $imoveis->tipo . '</h6>';
+                            echo '<h6 class="mb-3"> Bairro: ' . $imoveis->bairro . '</h6>';
                             echo '<h6 class="mb-3"> Categoria: ' . $imoveis->categoria . '</h6>';
                             echo '<h6 class="mb-3"> Valor: R$ ' . $imoveis->vl_valor . '</h6>';
                       

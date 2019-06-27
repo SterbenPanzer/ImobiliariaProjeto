@@ -26,7 +26,7 @@
         <div class="col-md-12">
         <nav class="navbar navbar-expand navbar">
             <a href="#" class="nav-link text-dark mr-5 MenuSimpleGeral2">Imob<span id="ColorDuo">Tech</span></a>
-        <a href="index.php" class="navbar-brand text-dark ml-5 TextOption">Inicial</a>
+        <a href="<?= $this->config->base_url() . 'Home/listar' ?>" class="navbar-brand text-dark ml-5 TextOption">Inicial</a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,7 +50,7 @@
                     </div>
                 </li>
                 <a href="#" class="nav-item active nav-link text-dark mr-3 TextOption">Quem somos</a>
-                <a href="#" class="nav item active nav-link text-dark TextOption">Contato</a>
+                <a href="<?= $this->config->base_url() . 'Contato/listar' ?>" class="nav item active nav-link text-dark TextOption">Contato</a>
             </ul>
 
             <form action="#" method="post" class="form-inline my-2 mylg-0">

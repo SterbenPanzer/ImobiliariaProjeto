@@ -6,32 +6,38 @@
                     <div class="col-md-3">
                         <select class="form-control my-4 ml-5 SelectOption" name="id_categoria" id="id_categoria">
                             <option selected hidden disabled>Categoria</option>
-                          <?php
-                                    if ($categorias != null) {
-                                        foreach ($categorias as $c) {
-                                            echo '<option ';
-                                            echo ((isset($imoveis)) && $c->id_categoria == $imoveis->cd_categoria) ? 'selected' : '';
-                                            echo ' value="' . $c->id_categoria . '">' . $c->tx_descricao . '</option>';
-                                        }
-                                    }
-                                    ?>
+                            <?php
+                            if ($categorias != null) {
+                                foreach ($categorias as $c) {
+                                    echo '<option ';
+                                    echo ' value="' . $c->id_categoria . '">' . $c->tx_descricao . '</option>';
+                                }
+                            }
+                            ?>
                         </select>
                         <select class="form-control my-4 ml-5 SelectOption" name="id_tipo" id="id_tipo">
                             <option selected hidden disabled>Tipo</option>
-                               <?php
-                                    if ($tipos != null) {
-                                        foreach ($tipos as $t) {
-                                            echo '<option ';
-                                            echo ((isset($imoveis)) && $t->id_tipo == $imoveis->cd_tipo) ? 'selected' : '';
-                                            echo ' value="' . $t->id_tipo . '">' . $t->tx_descricao . '</option>';
-                                        }
-                                    }
-                                    ?>
+                            <?php
+                            if ($tipos != null) {
+                                foreach ($tipos as $t) {
+                                    echo '<option ';
+                                    echo ' value="' . $t->id_tipo . '">' . $t->tx_descricao . '</option>';
+                                }
+                            }
+                            ?>
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-control my-4 ml-4  SelectOption" name="" id="">
-                            <option>Bairro</option>
+                        <select class="form-control my-4 ml-4  SelectOption" name="id_bairro" id="id_bairro">
+                            <option selected hidden disabled>Bairro</option>
+                                 <?php
+                            if ($bairros != null) {
+                                foreach ($bairros as $b) {
+                                    echo '<option ';
+                                    echo ' value="' . $b->id_bairro . '">' . $b->tx_descricao . '</option>';
+                                }
+                            }
+                            ?>
                         </select>
                         <select class="form-control my-4 ml-4  SelectOption" name="" id="">
                             <option>Dormitorios</option>
@@ -57,138 +63,50 @@
 <div class="container-fluid">
     <div class="col-md-12">
         <h1 class="my-5 TextOption4 ">Destaques</h1>
-        <div class="row my-5 ml-5">
-            <div class="col-md-4">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-header HeaderOption text-center">
-                        <h5 class="TextOption3">Apartamento-Venda</h5>
-                    </div>
-                    <img src="http://www.dcorevoce.com.br/wp-content/uploads/2016/02/Casas-lindas-baixas.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title TextOption3">Bairro estrela</h5>
-                        <p class="card-text">Dormitorios: 3 <br> Banheiros:2</p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h4 class="card-text">R$ 300.000,00</h4>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#" class="btn BotonOption"><i class="fas fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-header HeaderOption text-center">
-                        <h5 class="TextOption3">Apartamento-Venda</h5>
-                    </div>
-                    <img src="http://www.dcorevoce.com.br/wp-content/uploads/2016/02/Casas-lindas-baixas.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title TextOption3">Bairro estrela</h5>
-                        <p class="card-text">Dormitorios: 3 <br> Banheiros:2</p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h4 class="card-text">R$ 300.000,00</h4>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#" class="btn BotonOption"><i class="fas fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-header HeaderOption text-center">
-                        <h5 class="TextOption3">Apartamento-Venda</h5>
-                    </div>
-                    <img src="http://www.dcorevoce.com.br/wp-content/uploads/2016/02/Casas-lindas-baixas.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title TextOption3">Bairro estrela</h5>
-                        <p class="card-text">Dormitorios: 3 <br> Banheiros:2</p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h4 class="card-text">R$ 300.000,00</h4>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#" class="btn BotonOption"><i class="fas fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <div class = "row my-5 ml-5">
+            <?php
+            foreach ($imoveis as $i) {
 
-    <div class="container-fluid">
-        <div class="row my-5 ml-5">
-            <div class="col-md-4">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-header HeaderOption text-center">
-                        <h5 class="TextOption3">Apartamento-Venda</h5>
-                    </div>
-                    <img src="http://www.dcorevoce.com.br/wp-content/uploads/2016/02/Casas-lindas-baixas.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title TextOption3">Bairro estrela</h5>
-                        <p class="card-text">Dormitorios: 3 <br> Banheiros:2</p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h4 class="card-text">R$ 300.000,00</h4>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#" class="btn BotonOption"><i class="fas fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-header HeaderOption text-center">
-                        <h5 class="TextOption3">Apartamento-Venda</h5>
-                    </div>
-                    <img src="http://www.dcorevoce.com.br/wp-content/uploads/2016/02/Casas-lindas-baixas.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title TextOption3">Bairro estrela</h5>
-                        <p class="card-text">Dormitorios: 3 <br> Banheiros:2</p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h4 class="card-text">R$ 300.000,00</h4>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#" class="btn BotonOption"><i class="fas fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card shadow" style="width: 18rem;">
-                    <div class="card-header HeaderOption text-center">
-                        <h5 class="TextOption3">Apartamento-Venda</h5>
-                    </div>
-                    <img src="http://www.dcorevoce.com.br/wp-content/uploads/2016/02/Casas-lindas-baixas.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title TextOption3">Bairro estrela</h5>
-                        <p class="card-text">Dormitorios: 3 <br> Banheiros:2</p>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h4 class="card-text">R$ 300.000,00</h4>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#" class="btn BotonOption"><i class="fas fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+                echo '<div class = "col-md-4 my-4">' .
+                '<div class = "card shadow" style = "width: 18rem;">' .
+                '<div class = "card-header HeaderOption text-center">' .
+                '<h5 class = "TextOption3">' . $i->categoria . ' - ' . $i->tipo . '</h5>' .
+                '</div>';
+                foreach ($galerias as $g) {
+                    if ($g->cd_imovel == $i->id_imovel) {
+                        echo '<img src = "' . base_url('uploads/' . $g->im_imagem) . '" class = "card-img-top" alt = "...">';
+                    }
+                }
+                echo '<div class = "card-body">' .
+                '<h5 class = "card-title TextOption3">' . $i->tx_titulo . '</h5>';
+
+                $countG = 1;
+                foreach ($tipodetalhes as $d) {
+                    if ($countG <= 2) {
+                        if ($d->cd_imovel == $i->id_imovel) {
+                            echo '<p class = "card-text">' . $d->descricao . ' : ' . $d->valor . '</p>';
+                            $countG++;
+                        }
+                    }
+                }
+                echo '<hr>' .
+                '<div class = "row">' .
+                '<div class = "col-md-8">' .
+                '<h4 class = "card-text">R$ ' . $i->vl_valor . '</h4>' .
+                '</div>' .
+                '<div class = "col-md-4">' .
+                ' <a href = "#" class = "btn BotonOption"><i class = "fas fa-plus"></i></a>' .
+                '</div>' .
+                '</div>' .
+                '</div>' .
+                '</div>' .
+                '</div>';
+            }
+            ?>
+        </div>'
+    </div>
+</div>
+
 
 

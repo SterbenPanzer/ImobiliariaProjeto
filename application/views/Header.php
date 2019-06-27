@@ -66,6 +66,13 @@
                             <a class="dropdown-item" href="<?= $this->config->base_url() . 'Faleconosco/listar' ?>">Visualizar</a>
                         </div>
                     </li>
+                    <li class="nav-item active dropdown">
+                        <a href="#" id="menuBairro" class="nav-link dropdown-toggle ml-2" role="button" data-toggle="dropdown">Bairro</a>
+                        <div class="dropdown-menu" aria-labelledby="menuBairro">
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Bairro/cadastrar' ?>">Cadastrar</a>
+                            <a class="dropdown-item" href="<?= $this->config->base_url() . 'Bairro/listar' ?>">Visualizar</a>
+                        </div>
+                    </li>
                     <ul class="navbar-nav justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $this->config->base_url() . 'Admin/sair' ?>">

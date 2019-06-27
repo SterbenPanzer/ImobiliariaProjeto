@@ -72,6 +72,19 @@
                                     ?>
                                 </select>
                                 <br>
+                                <select class="custom-select mb-5" name="id_bairro" id="id_bairro">
+                                    <option  <?= (isset($bairros)) ? 'selected' : '' ?> hidden disabled>Selecione o bairro do imóvel.</option>
+                                    <?php
+                                    if ($bairros != null) {
+                                        foreach ($bairros as $b) {
+                                            echo '<option ';
+                                            echo ((isset($imoveis)) && $b->id_bairro == $imoveis->cd_bairro) ? 'selected' : '';
+                                            echo ' value="' . $b->id_bairro . '">' . $b->tx_descricao . '</option>';
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                <br>
                                 <select class="custom-select mb-5" name="id_categoria" id="id_categoria">
                                     <option  <?= (isset($tipos)) ? 'selected' : '' ?> hidden disabled>Selecione a categoria do imóvel.</option>
                                     <?php

@@ -3,10 +3,11 @@
 class Imovel_model extends CI_Model {
 
     public function getAll() {
-        $this->db->select('tb_imovel.*,tx_titulo as titulo,tb_tipo.tx_descricao as tipo,tb_status.tx_descricao as status,tb_categoria.tx_descricao as categoria');
+        $this->db->select('tb_imovel.*,tx_titulo as titulo,tb_tipo.tx_descricao as tipo,tb_status.tx_descricao as status,tb_categoria.tx_descricao as categoria,tb_bairro.tx_descricao as bairro');
         $this->db->join('tb_tipo', 'tb_tipo.id_tipo = tb_imovel.cd_tipo', 'inner');
         $this->db->join('tb_status', 'tb_status.id_status = tb_imovel.cd_status', 'inner');
         $this->db->join('tb_categoria', 'tb_categoria.id_categoria = tb_imovel.cd_categoria', 'inner');
+        $this->db->join('tb_bairro', 'tb_bairro.id_bairro = tb_imovel.cd_bairro', 'inner');
         //Busca os dados da tabela imovel no Banco de Dados
         $query = $this->db->get('tb_imovel');
 
@@ -34,11 +35,12 @@ class Imovel_model extends CI_Model {
 
     //Método que recebe um id por parâmetro e busca ele no banco de Dados.
     public function getOne($id) {
-        $this->db->select('tb_imovel.*,tx_titulo as titulo,tb_tipo.tx_descricao as tipo,tb_status.tx_descricao as status,tb_categoria.tx_descricao as categoria');
+        $this->db->select('tb_imovel.*,tx_titulo as titulo,tb_tipo.tx_descricao as tipo,tb_status.tx_descricao as status,tb_categoria.tx_descricao as categoria,tb_bairro.tx_descricao as bairro');
         $this->db->where('id_imovel', $id);
         $this->db->join('tb_tipo', 'tb_tipo.id_tipo = tb_imovel.cd_tipo', 'inner');
         $this->db->join('tb_status', 'tb_status.id_status = tb_imovel.cd_status', 'inner');
         $this->db->join('tb_categoria', 'tb_categoria.id_categoria = tb_imovel.cd_categoria', 'inner');
+        $this->db->join('tb_bairro', 'tb_bairro.id_bairro = tb_imovel.cd_bairro', 'inner');
 
         $query = $this->db->get('tb_imovel');
         //retorna a primeira linha
@@ -51,11 +53,26 @@ class Imovel_model extends CI_Model {
         //Retorna em formato de array
         return $query->result();
     }
+    
+    public function getBairro() {
+        //Pega  a tabela tipo no Banco de Dados.
+        $query = $this->db->get('tb_bairro');
+        //Retorna em formato de array
+        return $query->result();
+    }
 
     public function getDetalhesImovel($id) {
         $this->db->select('tb_imoveltipodetalhes.*,nm_valor as valor,tb_tipodetalhes.tx_descricao as descricao');        
         $this->db->join('tb_tipodetalhes', 'tb_tipodetalhes.id_tipodetalhes = tb_imoveltipodetalhes.cd_tipodetalhes', 'inner');
         $this->db->where('cd_imovel', $id);
+        $query = $this->db->get('tb_imoveltipodetalhes');
+        //retorna a primeira linha
+        return $query->result();
+    }
+    
+        public function getDetalhesImovel2() {
+        $this->db->select('tb_imoveltipodetalhes.*,nm_valor as valor,tb_tipodetalhes.tx_descricao as descricao');        
+        $this->db->join('tb_tipodetalhes', 'tb_tipodetalhes.id_tipodetalhes = tb_imoveltipodetalhes.cd_tipodetalhes', 'inner');
         $query = $this->db->get('tb_imoveltipodetalhes');
         //retorna a primeira linha
         return $query->result();
