@@ -85,9 +85,15 @@ table {
 .SelectOption {
     width: 150px;
 }
+
+
 .SelectOption2 {
     border-color: orangered;
     color: orangered;
+    width: 160px;
+}
+
+.SelectOption3 {
     width: 160px;
 }
 
